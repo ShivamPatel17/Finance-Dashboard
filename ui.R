@@ -2,7 +2,7 @@ ui <- function(){
   fluidPage(
     
     # Application title
-    titlePanel("Old Faithful Geyser Data"),
+    titlePanel("Herveeen is a baby"),
     
     # Sidebar with a slider input for number of bins 
     sidebarLayout(
