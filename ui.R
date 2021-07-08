@@ -1,24 +1,28 @@
 ui <- function(){
   fluidPage(
-    
-    # Application title
-    titlePanel("Herveeen is a baby"),
-    
-    # Sidebar with a slider input for number of bins 
-    sidebarLayout(
-      sidebarPanel(
-        sliderInput("bins",
-                    "Number of bins:",
-                    min = 1,
-                    max = 60,
-                    value = 30)
-      ),
+    navbarPage("Finance Tracker",
       
-      # Show a plot of the generated distribution
-      mainPanel(
-        plotOutput("distPlot")
-      )
+     tabPanel("Annual Trend"),
+     # Import data
+     
+     tabPanel("Monthly Trends"),
+     navbarMenu("Categories",
+                tabPanel("Food"),
+                tabPanel("Grocerries")),
+     column(2, "Buttons"),
+     actionButton("action", "Action"),
+     br(),
+     br(),
+     fluidRow(           
+       column(3,
+              selectInput("select", h3("Categories"), 
+                          choices = list("Food" = 1,
+                                         "Grocerries" = 2,
+                                         "Choice 3" = 3), selected = 1)),
+       submitButton("Submit")
+     )
     )
+    
   )
 }
 
