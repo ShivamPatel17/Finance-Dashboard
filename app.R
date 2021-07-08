@@ -8,23 +8,38 @@
 #
 
 library(shiny)
-source("ui.R")
+library(googlesheets4)
 
-# Define UI for application that draws a histogram
-ui <- ui()
 
-# Define server logic required to draw a histogram
+
+# Define UI ----
+ui <- navbarPage("Finance Tracker",
+                 
+                 tabPanel("Annual Trend"),
+                 # Import data
+                 
+                 tabPanel("Monthly Trends"),
+                 navbarMenu("Categories",
+                            tabPanel("Food"),
+                            tabPanel("Grocerries")),
+                column(2, "Buttons"),
+                    actionButton("action", "Action"),
+                    br(),
+                    br(),
+      fluidRow(           
+                column(3,
+                    selectInput("select", h3("Categories"), 
+                    choices = list("Food" = 1,
+                                   "Grocerries" = 2,
+                                   "Choice 3" = 3), selected = 1)),
+                              submitButton("Submit")
+      )
+)
+
+# Define server logic ----
 server <- function(input, output) {
-
-    output$distPlot <- renderPlot({
-        # generate bins based on input$bins from ui.R
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-        # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white')
-    })
+    
 }
 
-# Run the application 
+# Run the app ----
 shinyApp(ui = ui, server = server)
