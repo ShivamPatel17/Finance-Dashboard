@@ -10,9 +10,19 @@ ui <- function(){
       #tab with dropdown
       #TODO: iterate over categories and insert dynamic
       navbarMenu("Categories",
-                tabPanel("Food"),
+                tabPanel(uniqueCategories),
                 tabPanel("Grocerries")),
-
+    
+      tabPanel("Testing",
+        sidebarLayout(
+          sidebarPanel(
+            
+          ),
+          mainPanel(
+            dataTableOutput("testingPlot")
+          )
+        )
+        )
 
      )
     
