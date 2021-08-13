@@ -37,12 +37,12 @@ ui <- function(){
                
                #tab with dropdown
                #TODO: iterate over categories and insert dynamic
-               navbarMenu("Categories",
-                        
-                          do.call(tabPanel, uniqueCategories)
-                          ,
-                          tabPanel(uniqueCategories[1]),
-                          tabPanel("Grocerries")),
+               navbarMenu("Categories", 
+                          
+                          do.call(tabPanel, uniqueCategories) 
+                          , 
+                          tabPanel(uniqueCategories[1]), 
+                          tabPanel("Grocerries")), 
                
                tabPanel("Testing",
                         sidebarLayout(
@@ -56,10 +56,12 @@ ui <- function(){
                )
                
     )
-    
   )
-  
 }
+    
+  
+  
+
 # Define server logic ----
 server <- function(input, output) {
   
