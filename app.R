@@ -15,11 +15,16 @@ source("ui.R")
 
 
 # Reads data from Google sheet and stores it in the variable, "financeData"
-financeData <- read_sheet("https://docs.google.com/spreadsheets/d/1ThNMemTz_HrpkVQSWEy3SFu0TdMn4OZDu0s9NGI5fNQ/edit#gid=0")
+financeData <- read_sheet("https://docs.google.com/spreadsheets/d/1nyrWHc-LFwaIcaCVwfRUVKP5X5tUBFKheu7py1isnZE/edit?usp=sharing")
 
 # Extracts unique categories from dataset
 uniqueCategories <- (unique(financeData$Category))
 uniqueCategories <- as.list(uniqueCategories)
+
+tabPanelList <- list()
+tabPanelList <- append(tabPanelList, tabPanel("Hi"))
+tabPanelList <- append(tabPanelList, tabPanel("Bye"))
+tabPanelList <- append(tabPanelList, tabPanel("Good morning"))
 
 print(typeof(uniqueCategories))
 print(uniqueCategories)
@@ -37,13 +42,9 @@ ui <- function(){
                
                #tab with dropdown
                #TODO: iterate over categories and insert dynamic
-               navbarMenu("Categories", 
-                          
-                          do.call(tabPanel, uniqueCategories) 
-                          , 
-                          tabPanel(uniqueCategories[1]), 
-                          tabPanel("Grocerries")), 
-               
+               navbarMenu("Categories"
+
+               ),
                tabPanel("Testing",
                         sidebarLayout(
                           sidebarPanel(
